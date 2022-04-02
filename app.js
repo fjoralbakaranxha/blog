@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
+const PORT = process.env.PORT || 5000;
 
 
 
@@ -19,6 +20,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 app.get("/", function(req, res){
     res.render("home", { 
@@ -66,7 +68,3 @@ app.post("/compose", function(req, res) {
 
 
 
-
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
-});
